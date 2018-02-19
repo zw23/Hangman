@@ -11,8 +11,7 @@ public class Words {
     static String[] words2 = { "Scotland", "England", "Wales", "Northern Ireland", "Ireland",
             "France", "Germany", "Netherlands", "Spain", "Portugal",
             "Belgium", "Luxembourg", "Switzerland", "Italy", "Greece" };
-    static String[] words3 = { "St Andrews", "Edinburgh", "Glasgow", "Kirkcaldy", "Perth",
-            "Dundee", "Stirling", "Inverness", "Aberdeen", "Falkirk" };
+    static String[] words3 = {"Dundee" };
 
     static ArrayList<String> customwords;
 
@@ -21,7 +20,7 @@ public class Words {
             return words1[(int)(Math.random()*9)];
         if (category == 2)
             return words2[(int)(Math.random()*15)];
-        return words3[(int)(Math.random()*10)];
+        return words3[0];
     }
 
     public static String randomWord(String wordsource) {

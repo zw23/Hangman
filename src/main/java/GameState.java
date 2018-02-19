@@ -32,8 +32,11 @@ public class GameState {
 
     void showWord() {
         for (int i = 0; i < word.length(); ++i) {
+            System.out.println(got);
             if (got.contains(word.charAt(i))) {
-                System.out.print(word.charAt(i));
+
+                System.out.print(word.charAt(i)+"("+i+")");
+
             } else {
                 System.out.print("-");
             }
@@ -51,6 +54,7 @@ public class GameState {
         String str = sc.next().toLowerCase();
 
         if (str.length() > 1) {
+
             if (str==word) {
                 not.clear();
                 return true;
@@ -66,8 +70,21 @@ public class GameState {
 
         for(i = 0; i < not.size(); ++i) { // Loop over the not got
             if (not.get(i) == letter) {
+                System.out.println(not.get(i));
+                System.out.println(word.length());
+                if(Character.toUpperCase(letter) == (word.charAt(0))){
+
+                    got.add(Character.toUpperCase(not.get(i)));
+                    got.add(Character.toLowerCase(letter));
+
+                }else{
+
+                    got.add(Character.toLowerCase(letter));
+            }
+
                 not.remove(i);
-                got.add(letter);
+
+
                 g++;
                 return true;
             }
