@@ -79,4 +79,11 @@ public class GameStateTest {
         assertEquals(game.remainingGuesses,ExpectedRemainingGuesses);
     }
 
+    @Test
+    public void notArrayContainsWhitespace(){
+        game = new GameState(perthAndKinrosse,10,10);
+        char a = ' ';
+        assertFalse(game.not.contains(a));
+    }
+
 }
