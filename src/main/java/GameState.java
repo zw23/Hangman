@@ -1,5 +1,7 @@
 
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,7 +14,9 @@ public class GameState {
     ArrayList<Character> got;
     ArrayList<Character> not;
 
-    public Scanner sc = new Scanner(System.in).useDelimiter("\n");
+
+
+
 
     public GameState(String target, int g, int h) {
         this.word = target;
@@ -45,14 +49,19 @@ public class GameState {
         // System.out.println(missing);
     }
 
-    boolean guessLetter() {
+
+    boolean guessLetter(){
+         return guessLetter(new Scanner(System.in).useDelimiter("\n"));
+    }
+
+    boolean guessLetter(Scanner sc) {
         int i;
         char letter;
 
         System.out.print("Guess a letter or word (? for a hint): ");
 
         String str = sc.next().toLowerCase();
-
+       // in = sc.next().toString().toLowerCase();
         if (str.length() > 1) {
 
             if (str==word) {
@@ -70,8 +79,7 @@ public class GameState {
 
         for(i = 0; i < not.size(); ++i) { // Loop over the not got
             if (not.get(i) == letter) {
-                System.out.println(not.get(i));
-                System.out.println(word.length());
+
                 if(Character.toUpperCase(letter) == (word.charAt(0))){
 
                     got.add(Character.toUpperCase(not.get(i)));
