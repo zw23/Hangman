@@ -14,7 +14,7 @@ public class GameState {
 
     ArrayList<Character> got;
     ArrayList<Character> not;
-    public char space = ' ';
+    private char space = ' ';
 
 
 

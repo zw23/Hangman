@@ -20,7 +20,13 @@ public class Words {
             return words1[(int)(Math.random()*9)];
         if (category == 2)
             return words2[(int)(Math.random()*15)];
-        return words3[(int)(Math.random()*10)];
+        if (category == 3)
+            return words3[(int)(Math.random()*10)];
+        if (category > 3 ||category<1){
+            System.out.println("Please enter a valid number.");
+            return null;
+        }
+        return null;
     }
 
     public static String randomWord(String wordsource) {
