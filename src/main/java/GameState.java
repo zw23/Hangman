@@ -8,7 +8,7 @@ public class GameState {
     public String word;
     public int numberOfGuessesTook;
     public int remainingGuesses;
-    public int hints;
+    public int hintsLeft;
 
     ArrayList<Character> got;
     ArrayList<Character> not;
@@ -30,7 +30,7 @@ public class GameState {
 
         this.numberOfGuessesTook = 0;
         remainingGuesses = maxGuess;
-        this.hints = maxHints;
+        this.hintsLeft = maxHints;
     }
 
     void showWord() {
@@ -111,7 +111,7 @@ public class GameState {
     }
 
     void hint() {
-        if (hints == 0) {
+        if (hintsLeft == 0) {
             System.out.println("No more hints allowed");
         }
 
