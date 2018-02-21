@@ -12,7 +12,7 @@ public class GameState {
 
     ArrayList<Character> got;
     ArrayList<Character> not;
-
+    public char space = ' ';
 
 
 
@@ -23,8 +23,11 @@ public class GameState {
         got = new ArrayList<Character>();
 
         for(int i = 0; i < target.length(); ++i) {
-            if (!not.contains(Character.toLowerCase(target.charAt(i))))
+
+
+            if (target.charAt(i) != space && !not.contains(Character.toLowerCase(target.charAt(i))) )
                 not.add(Character.toLowerCase(target.charAt(i)));
+
         }
         //System.out.println(missing);
 
