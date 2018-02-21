@@ -101,7 +101,12 @@ public class GameState {
             hint();
             return message(false);
         }
-
+        for(int j = 0; j<got.size();++j){
+            if(got.get(j) == letter){
+                System.out.println("This letter is already guessed, please enter another letter.");
+                return false;
+            }
+        }
         for(i = 0; i < not.size(); ++i) { // Loop over the not got
             if (not.get(i) == letter) {
 
@@ -138,6 +143,8 @@ public class GameState {
             return false;
         }
     }
+
+
     boolean won() {
         if (not.size() == 0) return true; else return false;
     }

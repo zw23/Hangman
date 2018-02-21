@@ -108,7 +108,28 @@ public class GameStateTest {
         game.guessLetter(new Scanner(input));
 
         assertEquals(10,game.remainingGuesses);
+        String input2 = "c";
+        game.guessLetter(new Scanner(input2));
 
+        assertEquals(9,game.remainingGuesses);
+    }
+
+    @Test
+    public void remainingHintsLeftTest(){
+        game = new GameState(perthAndKinrosse,10,10);
+        String input = "?\n";
+        game.guessLetter(new Scanner(input));
+        game.guessLetter(new Scanner(input));
+        game.guessLetter(new Scanner(input));
+        game.guessLetter(new Scanner(input));
+        game.guessLetter(new Scanner(input));
+        game.guessLetter(new Scanner(input));
+        game.guessLetter(new Scanner(input));
+        game.guessLetter(new Scanner(input));
+        game.guessLetter(new Scanner(input));
+
+        assertTrue(game.guessLetter(new Scanner(input)));
+        assertFalse(game.guessLetter(new Scanner(input)));
     }
 
 }
