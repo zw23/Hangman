@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Hangman {
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         GameState game; CommandOpts opts;
         boolean correct;
@@ -33,7 +33,7 @@ public class Hangman {
             game = new GameState(word, opts.maxguesses, opts.maxhints);
         }
         else {
-            game = new GameState(Words.randomWord(opts.wordsource), opts.maxguesses, opts.maxhints);
+            game = new GameState(Words.randomWord(opts.wordsource) , opts.maxguesses, opts.maxhints);
         }
 
         while(!game.won() && !game.lost()) {

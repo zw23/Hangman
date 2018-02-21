@@ -5,14 +5,13 @@ import java.util.ArrayList;
 import static org.junit.Assert.*;
 public class FileFormatTest {
 
-    @Test(expected = Exception.class)
+    @Test
     public void wrongFormatTest(){
 
-        String[] args = { "--guesses", "2", "--hints", "4", "word_bad.txt" };
 
-        Hangman hangman = new Hangman();
-
-        hangman.main(args);
+        assertEquals(null,Words.randomWord("word_bad.txt"));
+        assertEquals(null,Words.randomWord("word_bad2.txt"));
+        assertEquals(null,Words.randomWord("word_badLong.txt"));
 
     }
 }

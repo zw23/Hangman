@@ -2,6 +2,9 @@
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Words {
 
@@ -32,12 +35,17 @@ public class Words {
     public static String randomWord(String wordsource) {
         String line;
         customwords = new ArrayList<String>();
+        Pattern p = Pattern.compile("[a-zA-Z^\\s]+");
+
 
         try {
             FileReader file = new FileReader(wordsource);
             BufferedReader reader = new BufferedReader(file);
             while((line = reader.readLine()) != null) {
-                customwords.add(line);
+                Matcher match = p.matcher(line);
+                boolean valid = match.matches();
+                if(line.length()>=100) return null;
+                if(valid) customwords.add(line);else return null;
             }
             return customwords.get((int)(Math.random()*customwords.size()));
         } catch(FileNotFoundException e) {
