@@ -100,6 +100,15 @@ public class GameStateTest {
         assertFalse(game.not.contains(a));
     }
 
+    @Test
+    public void disallowSameCorrectInputs(){
+        game = new GameState(perthAndKinrosse,10,10);
+        String input = "p\n";
+        game.guessLetter(new Scanner(input));
+        game.guessLetter(new Scanner(input));
 
+        assertEquals(10,game.remainingGuesses);
+
+    }
 
 }
