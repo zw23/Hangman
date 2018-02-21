@@ -45,7 +45,9 @@ public class GameState {
 
                 System.out.print(word.charAt(i));
 
-            } else {
+            } else if(word.charAt(i) == space){
+                System.out.print(" ");
+            }else{
                 System.out.print("-");
             }
         }
