@@ -11,6 +11,7 @@ import java.util.Scanner;
 public class GameStateTest {
     String dundee = "Dundee";
     String edinburgh = "Edinburgh";
+    String perthAndKinrosse = "Prth and Kinross";
     GameState game,game2;
     ArrayList<Character> got;
 
@@ -67,11 +68,15 @@ public class GameStateTest {
 
     @Test
     public void disallowInvalidInput(){
-        int guessExpectedValue = 10;
-        game = new GameState(dundee,10,10);
-        String input = ";\n";
+
+        int ExpectedRemainingGuesses = 9;
+        game = new GameState(perthAndKinrosse,10,10);
+
+        //A white space input should not be allowed.
+        String input = " \n";
         game.guessLetter(new Scanner(input));
-        game.g
+
+        assertEquals(game.remainingGuesses,ExpectedRemainingGuesses);
     }
 
 }
