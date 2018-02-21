@@ -3,6 +3,8 @@
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class GameState {
     public String word;
@@ -53,6 +55,7 @@ public class GameState {
 
 
     boolean guessLetter(){
+
          return guessLetter(new Scanner(System.in).useDelimiter("\n"));
     }
 
@@ -60,9 +63,28 @@ public class GameState {
         int i;
         char letter;
 
+        boolean validLetter = false;
+        Pattern p = Pattern.compile("[a-zA-Z?]+");
+
+        String str = " ";
+
         System.out.print("Guess a letter or word (? for a hint): ");
 
-        String str = sc.next().toLowerCase();
+        while(!validLetter){
+
+
+            str = sc.next();
+
+            Matcher match = p.matcher(str);
+
+            validLetter = match.matches();
+
+            if(!validLetter)System.out.print("Please enter a valid input[a-zA-Z] (? for a hint): ");
+
+
+        }
+            str.toLowerCase();
+
        // in = sc.next().toString().toLowerCase();
         if (str.length() > 1) {
 

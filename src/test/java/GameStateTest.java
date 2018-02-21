@@ -6,6 +6,7 @@ import org.junit.Test;
 
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class GameStateTest {
@@ -69,12 +70,25 @@ public class GameStateTest {
     @Test
     public void disallowInvalidInput(){
 
-        int ExpectedRemainingGuesses = 9;
+        int ExpectedRemainingGuesses = 10;
         game = new GameState(perthAndKinrosse,10,10);
 
         //A white space input should not be allowed.
         String input = " \n";
-        game.guessLetter(new Scanner(input));
+        try{
+            game.guessLetter(new Scanner(input));
+        }catch (Exception e){
+
+        }
+
+
+        String input2 = ";\n";
+        try{
+            game.guessLetter(new Scanner(input2));
+        }catch(NoSuchElementException e){
+
+        }
+
 
         assertEquals(game.remainingGuesses,ExpectedRemainingGuesses);
     }
