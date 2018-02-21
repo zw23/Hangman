@@ -65,6 +65,13 @@ public class GameStateTest {
 
     }
 
-
+    @Test
+    public void disallowInvalidInput(){
+        int guessExpectedValue = 10;
+        game = new GameState(dundee,10,10);
+        String input = ";\n";
+        game.guessLetter(new Scanner(input));
+        game.g
+    }
 
 }

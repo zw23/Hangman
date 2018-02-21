@@ -17,6 +17,7 @@ public class CommandOpts {
             if (args[i].equals("--guesses")) {
                 maxguesses = Integer.parseInt(args[i+1]);
                 i++;
+
             }
             else if (args[i].equals("--hints")) {
                 maxhints = Integer.parseInt(args[i+1]);

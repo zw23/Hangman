@@ -15,4 +15,13 @@ public class CommandOptsTest {
         assertEquals(opts.wordsource, "words.txt");
     }
 
+    @Test
+    public void optionsTestFail(){
+        String[] args = { "--guesses", "f", "--hints", "4", "words.txt" };
+        CommandOpts opts = new CommandOpts(args);
+        assertEquals(opts.maxguesses, 2);
+        assertEquals(opts.maxhints, 4);
+        assertEquals(opts.wordsource, "words.txt");
+
+    }
 }

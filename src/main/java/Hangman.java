@@ -28,7 +28,7 @@ public class Hangman {
         while(!game.won() && !game.lost()) {
             game.showWord();
 
-            System.out.println("Guesses remaining: " + game.wrong);
+            System.out.println("Guesses remaining: " + game.remainingGuesses);
 
             correct = game.guessLetter();
 
@@ -38,7 +38,7 @@ public class Hangman {
 
         if (game.won()) {
             System.out.println("Well done!");
-            System.out.println("You took " + game.g + " guesses");
+            System.out.println("You took " + game.numberOfGuessesTook + " guesses");
         } else {
             System.out.println("You lost! The word was " + game.word);
         }
