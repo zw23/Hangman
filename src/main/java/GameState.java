@@ -31,7 +31,7 @@ public class GameState {
                 not.add(Character.toLowerCase(target.charAt(i)));
 
         }
-        //System.out.println(missing);
+
 
         this.numberOfGuessesTook = 0;
         remainingGuesses = maxGuess;
@@ -64,7 +64,7 @@ public class GameState {
     boolean guessLetter(Scanner sc) {
         int i;
         char letter;
-
+        String fullWord = "";
         boolean validLetter = false;
         Pattern p = Pattern.compile("[a-zA-Z?]+");
 
@@ -75,13 +75,20 @@ public class GameState {
         while(!validLetter){
 
 
-            str = sc.next().toLowerCase();
+            str = sc.nextLine().toLowerCase();
+            if(str.length() <= 1){
+                Matcher match = p.matcher(str);
 
-            Matcher match = p.matcher(str);
+                validLetter = match.matches();
 
-            validLetter = match.matches();
+                if(!validLetter)System.out.print("Please enter a valid input[a-zA-Z] (? for a hint): ");
+            }else{
+                fullWord = word.toLowerCase();
 
-            if(!validLetter)System.out.print("Please enter a valid input[a-zA-Z] (? for a hint): ");
+
+                validLetter = true;
+            }
+
 
 
         }
@@ -90,8 +97,9 @@ public class GameState {
        // in = sc.next().toString().toLowerCase();
         if (str.length() > 1) {
 
-            if (str==word) {
+            if (str.equals(fullWord)) {
                 not.clear();
+                numberOfGuessesTook++;
                 return message(true);
             } else return message(false);
         }

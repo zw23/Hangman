@@ -135,9 +135,11 @@ public class GameStateTest {
 
     @Test
     public void wordInput(){
+
         game = new GameState(theUK,10,10);
         String input = "tHE UK";
 
-        assertTrue(game.guessLetter(new Scanner(input)));
+        assertEquals(true,game.guessLetter(new Scanner(input)));
+
     }
 }
