@@ -43,7 +43,7 @@ public class GameState {
             //System.out.println(got);
             if (got.contains(word.charAt(i))) {
 
-                System.out.print(word.charAt(i)+"("+i+")");
+                System.out.print(word.charAt(i));
 
             } else {
                 System.out.print("-");
@@ -51,6 +51,7 @@ public class GameState {
         }
         System.out.println("");
         System.out.println("Guesses remaining: " + remainingGuesses);
+        System.out.println("hints remaining: " + hintsLeft);
 
     }
 
@@ -74,7 +75,7 @@ public class GameState {
         while(!validLetter){
 
 
-            str = sc.next();
+            str = sc.next().toLowerCase();
 
             Matcher match = p.matcher(str);
 
@@ -84,7 +85,7 @@ public class GameState {
 
 
         }
-            str.toLowerCase();
+
 
        // in = sc.next().toString().toLowerCase();
         if (str.length() > 1) {
@@ -98,8 +99,15 @@ public class GameState {
         letter = str.charAt(0);
 
         if (letter == '?') {
-            hint();
-            return message(false);
+            if(hintsLeft != 0){
+                hintsLeft--;
+                hint();
+                return true;
+            }else{
+                System.out.println("SORRY, You have used all your hints.");
+                return false;
+            }
+
         }
         for(int j = 0; j<got.size();++j){
             if(got.get(j) == letter){
@@ -154,9 +162,6 @@ public class GameState {
     }
 
     void hint() {
-        if (hintsLeft == 0) {
-            System.out.println("No more hints allowed");
-        }
 
         System.out.print("Try: ");
         System.out.println(not.get((int)(Math.random()*not.size())));

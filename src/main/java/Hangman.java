@@ -1,5 +1,6 @@
 
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Hangman {
@@ -19,7 +20,17 @@ public class Hangman {
 
             System.out.print("Pick a category:");
 
-            game = new GameState(Words.randomWord(sc.nextInt()), opts.maxguesses, opts.maxhints);
+            String word = null;
+            while(word == null){
+                try {
+                    word = Words.randomWord(sc.nextInt());
+                }catch (InputMismatchException e){
+                    System.out.println("Please enter an integer(1-3).");
+                    sc.nextLine();
+                }
+            }
+
+            game = new GameState(word, opts.maxguesses, opts.maxhints);
         }
         else {
             game = new GameState(Words.randomWord(opts.wordsource), opts.maxguesses, opts.maxhints);
