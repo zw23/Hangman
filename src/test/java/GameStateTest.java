@@ -13,6 +13,7 @@ public class GameStateTest {
     String dundee = "Dundee";
     String edinburgh = "Edinburgh";
     String perthAndKinrosse = "Prth and Kinross";
+    String theUK = "the uk";
     GameState game,game2;
     ArrayList<Character> got;
 
@@ -132,4 +133,11 @@ public class GameStateTest {
         assertFalse(game.guessLetter(new Scanner(input)));
     }
 
+    @Test
+    public void wordInput(){
+        game = new GameState(theUK,10,10);
+        String input = "tHE UK";
+
+        assertTrue(game.guessLetter(new Scanner(input)));
+    }
 }

@@ -15,7 +15,9 @@ public class CommandOpts {
 
         for(int i = 0; i < args.length; ++i) {
             if (args[i].equals("--guesses")) {
-                maxguesses = Integer.parseInt(args[i+1]);
+
+                    maxguesses = Integer.parseInt(args[i + 1]);
+
                 i++;
 
             }
@@ -24,6 +26,7 @@ public class CommandOpts {
                 i++;
             }
             else wordsource = args[i];
+
         }
     }
 }
