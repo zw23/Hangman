@@ -50,6 +50,7 @@ public class GameState {
             }
         }
         System.out.println("");
+        System.out.println("Guesses remaining: " + remainingGuesses);
 
     }
 
@@ -90,15 +91,15 @@ public class GameState {
 
             if (str==word) {
                 not.clear();
-                return true;
-            } else return false;
+                return message(true);
+            } else return message(false);
         }
 
         letter = str.charAt(0);
 
         if (letter == '?') {
             hint();
-            return false;
+            return message(false);
         }
 
         for(i = 0; i < not.size(); ++i) { // Loop over the not got
@@ -118,15 +119,25 @@ public class GameState {
 
 
                 numberOfGuessesTook++;
-                return true;
+                return message(true);
             }
         }
 
+
         numberOfGuessesTook++; // One more guess
         remainingGuesses--;
-        return false;
+        return message(false);
     }
 
+    boolean message(boolean result){
+        if(result){
+            System.out.println("Good guess!");
+            return true;
+        }else{
+            System.out.println("Wrong guess!");
+            return false;
+        }
+    }
     boolean won() {
         if (not.size() == 0) return true; else return false;
     }
